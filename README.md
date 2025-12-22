@@ -154,6 +154,7 @@ Aplikasi Streamlit disiapkan sebagai antarmuka untuk memprediksi tingkat kematan
 
 ## 🧱 Struktur Folder
 
+```bash
 DEMO_UAP_ML/
 ├─ src/
 │  └─ app.py
@@ -172,6 +173,7 @@ DEMO_UAP_ML/
 ├─ pyproject.toml
 ├─ pdm.lock
 └─ README.md
+```
 
 ---
 
