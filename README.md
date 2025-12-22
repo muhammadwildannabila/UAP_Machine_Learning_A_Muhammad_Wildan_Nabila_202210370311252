@@ -1,6 +1,5 @@
 # 🌴 Sawit Ripeness Classifier (UAP Pembelajaran Mesin)
 
-![Hero](docs/hero.png)
 > Sistem klasifikasi tingkat kematangan tandan sawit (5 kelas) berbasis citra menggunakan CNN baseline dan Transfer Learning (MobileNetV2 & EfficientNetB0).  
 > Mendukung prediksi **single/multi-image** dan **ZIP batch** via Streamlit.
 
@@ -127,11 +126,13 @@ Model yang diuji:
 
 ### 1) Install dependensi
 Jika pakai PDM:
-```bash
+```
 pdm install
-### 1) Install dependensi
+```
+### 2) Jalankan Streamlit
+```
 pdm run streamlit run src/app.py
-
+```
 ---
 
 ## 🖥️ Demo Streamlit
@@ -148,12 +149,6 @@ Aplikasi Streamlit disiapkan sebagai antarmuka untuk memprediksi tingkat kematan
 - Menampilkan **Confidence + Margin (Top1–Top2)** untuk mendeteksi ambiguitas prediksi
 - Peringatan **LOW confidence** + **insight & saran foto ulang**
 - **Download hasil prediksi (CSV)** untuk multi-image dan ZIP
-
-### ▶️ Cara Menjalankan (Lokal / VSCode)
-Pastikan kamu menjalankan perintah dari **root project**:
-
-```bash
-pdm run streamlit run src/app.py
 
 ---
 
@@ -199,5 +194,4 @@ DEMO_UAP_ML/
 
 | Nama | NIM | Prodi | Tahun |
 |------|-----|------|------|
-| Muhammad Wildan Nabila | 202210370311252 | Informatika, Universitas Muhammadiyah Malang | 2025 |
-
+| **Muhammad Wildan Nabila** | **202210370311252** | **Informatika, Universitas Muhammadiyah Malang** | **2025** |
