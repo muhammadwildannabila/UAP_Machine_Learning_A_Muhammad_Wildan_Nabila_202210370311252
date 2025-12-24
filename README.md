@@ -19,10 +19,11 @@
    - [Ringkasan Performa](#-ringkasan-performa)  
    - [Confusion Matrix & Error Analysis](#-confusion-matrix--error-analysis)  
 5. [Cara Menjalankan (VSCode / Lokal)](#-cara-menjalankan-vscode--lokal)  
-6. [Demo Streamlit](#-demo-streamlit)  
-7. [Struktur Folder](#-struktur-folder)  
-8. [Keterbatasan & Rencana Perbaikan](#-keterbatasan--rencana-perbaikan)  
-9. [Biodata / Kontributor](#-kontributor)
+6. [Demo Streamlit](#-demo-streamlit)
+7. [Link Live Demo](#link-live-demo) 
+8. [Struktur Folder](#-struktur-folder)  
+9. [Keterbatasan & Rencana Perbaikan](#-keterbatasan--rencana-perbaikan)  
+10. [Biodata / Kontributor](#-kontributor)
 
 ---
 
@@ -152,6 +153,13 @@ Aplikasi Streamlit disiapkan sebagai antarmuka untuk memprediksi tingkat kematan
 
 ---
 
+## 🔗 Link Live Demo <a id="link-live-demo"></a>
+
+Dashboard streamlit dapat diakses oleh pengguna lain melalui link berikut:
+- **Live Demo:** https://uapmachinelearningamuhammadwildannabila202210370311252-3dgw4zg.streamlit.app/
+
+---
+
 ## 🧱 Struktur Folder
 
 ```bash
@@ -164,14 +172,13 @@ DEMO_UAP_ML/
 │  ├─ model_mobilenetv2.keras
 │  └─ model_efficientnetb0_ft.keras
 ├─ results/
-│  ├─ figures/         # plot acc/loss, confusion matrix
-│  ├─ reports/         # classification_report per model (txt)
-│  ├─ tables/          # summary_metrics.csv, dll
-│  └─ demo_outputs/    # output prediksi multi/zip (csv)
-├─ docs/               # (opsional) screenshot UI Streamlit + hero image
-├─ notebooks/          # (opsional) training & evaluasi di Colab
+│  ├─ figures/         
+│  ├─ reports/                       
+├─ notebooks/          
 ├─ pyproject.toml
 ├─ pdm.lock
+├─ requirements.txt
+├─ .gitignore
 └─ README.md
 ```
 
