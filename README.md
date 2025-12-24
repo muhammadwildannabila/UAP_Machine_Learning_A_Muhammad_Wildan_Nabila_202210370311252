@@ -1,4 +1,4 @@
-# 🌴 Sawit Ripeness Classifier (UAP Pembelajaran Mesin)
+# 🌴 Sawit Ripeness Classifier (UAP Machine Learning A)
 
 > Sistem klasifikasi tingkat kematangan tandan sawit (5 kelas) berbasis citra menggunakan CNN baseline dan Transfer Learning (MobileNetV2 & EfficientNetB0).  
 > Mendukung prediksi **single/multi-image** dan **ZIP batch** via Streamlit.
@@ -29,7 +29,7 @@
 
 ## 🧾 Deskripsi Project
 
-Project ini dibuat untuk memenuhi **UAP Mata Kuliah Pembelajaran Mesin**.  
+Project ini dibuat untuk memenuhi **UAP Mata Kuliah Machine Learning**.  
 Tujuan utamanya adalah membangun sistem klasifikasi tingkat kematangan tandan sawit berbasis citra dan menyajikannya dalam bentuk aplikasi **Streamlit** yang mudah digunakan user.
 
 ### 🔍 Latar Belakang
@@ -125,14 +125,15 @@ Model yang diuji:
 
 ## 💻 Cara Menjalankan (VSCode / Lokal)
 
-### 1) Install dependensi
-Jika pakai PDM:
+> Jalankan semua perintah dari **root project** (folder yang berisi `pyproject.toml`).
+> 
+### 1) Install dependensi (PDM)
 ```
 pdm install
 ```
-### 2) Jalankan Streamlit
+### 2) Jalankan Aplikasi Streamlit
 ```
-pdm run streamlit run src/app.py
+pdm run python -m streamlit run src/app.py
 ```
 ---
 
