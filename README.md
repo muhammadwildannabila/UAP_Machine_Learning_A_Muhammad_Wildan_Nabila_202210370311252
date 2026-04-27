@@ -8,7 +8,7 @@
 ![Computer Vision](https://img.shields.io/badge/Computer-Vision-green?style=for-the-badge)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge)
 
-### 🔵 Academic Project (Coursework / Assignment)
+### 🔵 Academic Project (Coursework / Assignment) 2025
 
 </div>
 
@@ -48,21 +48,37 @@ The objective is to improve **consistency, scalability, and objectivity** in rip
 
 - Source: [Google Drive Dataset](https://drive.google.com/drive/folders/1-nIuz8GupNU95R9naIz6s1i0DnDBahlP?usp=sharing)  
 - Total Classes: **5**
-  - `decayed`
-  - `fully_ripe`
-  - `immature`
-  - `over_ripe`
-  - `partially_ripe`
 
-### 📊 Data Distribution
-- Total: **5058 images**
-- Train: **70% (3541)**
-- Validation: **15% (759)**
-- Test: **15% (758)**
+### 🖼️ Sample Data per Class
 
-> Stratified splitting ensures balanced class distribution across datasets.
+| Class | Example |
+|------|--------|
+| **immature** | ![](assets/immature.jpg) |
+| **partially_ripe** | ![](assets/partiallyripe.jpg) |
+| **fully_ripe** | ![](assets/fullyripe.jpg) |
+| **over_ripe** | ![](assets/overripe.jpg) |
+| **decayed** | ![](assets/decayed.jpg) |
 
-⚠️ Note: Some classes exhibit **high visual similarity**, affecting classification confidence.
+---
+
+### 📊 Data Characteristics
+
+- Total images: **5058**
+- Stratified split:
+  - Train: 70%
+  - Validation: 15%
+  - Test: 15%
+
+### ⚠️ Notes
+
+- Some classes exhibit **high visual similarity**, especially:
+  - *partially_ripe* vs *fully_ripe*
+- Variability in:
+  - Lighting conditions  
+  - Background complexity  
+  - Object scale  
+
+These factors contribute to **classification ambiguity and model uncertainty**.
 
 ---
 
