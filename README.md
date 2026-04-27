@@ -1,207 +1,213 @@
-# 🌴 Sawit Ripeness Classifier (UAP Machine Learning A)
+<div align="center">
 
-> Sistem klasifikasi tingkat kematangan tandan sawit (5 kelas) berbasis citra menggunakan CNN baseline dan Transfer Learning (MobileNetV2 & EfficientNetB0).  
-> Mendukung prediksi **single/multi-image** dan **ZIP batch** via Streamlit.
+# 🌴 Sawit Ripeness Classifier  
+### Deep Learning for Oil Palm Maturity Classification
 
----
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python)
+![Deep Learning](https://img.shields.io/badge/Deep-Learning-CNN-orange?style=for-the-badge)
+![Computer Vision](https://img.shields.io/badge/Computer-Vision-green?style=for-the-badge)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge)
 
-## 📌 Table of Contents
-1. [Deskripsi Project](#-deskripsi-project)  
-   - [Latar Belakang](#-latar-belakang)  
-   - [Tujuan](#-tujuan)  
-2. [Dataset](#-dataset)  
-3. [Eksperimen & Metodologi](#-eksperimen--metodologi)  
-   - [EDA Singkat](#-eda-singkat)  
-   - [Preprocessing](#-preprocessing)  
-   - [Augmentasi](#-augmentasi)  
-   - [Pemodelan](#-pemodelan)  
-4. [Hasil & Analisis](#-hasil--analisis)  
-   - [Ringkasan Performa](#-ringkasan-performa)  
-   - [Confusion Matrix & Error Analysis](#-confusion-matrix--error-analysis)  
-5. [Cara Menjalankan (VSCode / Lokal)](#-cara-menjalankan-vscode--lokal)  
-6. [Demo Streamlit](#-demo-streamlit)
-7. [Link Live Demo](#link-live-demo) 
-8. [Struktur Folder](#-struktur-folder)  
-9. [Keterbatasan & Rencana Perbaikan](#-keterbatasan--rencana-perbaikan)  
-10. [Biodata / Kontributor](#-kontributor)
+### 🔵 Academic Project (Coursework / Assignment)
+
+</div>
 
 ---
 
-## 🧾 Deskripsi Project
+## 🖥️ Application Preview
 
-Project ini dibuat untuk memenuhi **UAP Mata Kuliah Machine Learning**.  
-Tujuan utamanya adalah membangun sistem klasifikasi tingkat kematangan tandan sawit berbasis citra dan menyajikannya dalam bentuk aplikasi **Streamlit** yang mudah digunakan user.
+![Dashboard](assets/dashboard-preview.png)
 
-### 🔍 Latar Belakang
-Kematangan tandan sawit berpengaruh langsung terhadap kualitas hasil panen. Penilaian manual sering terpengaruh pencahayaan, sudut pengambilan gambar, dan subjektivitas pengamat. Oleh karena itu, project ini mengembangkan model klasifikasi citra untuk membantu prediksi kematangan secara lebih konsisten.
+> Interactive dashboard for oil palm ripeness classification with multi-input support and confidence-based insights.
 
-### 🎯 Tujuan
-1. Membangun baseline model **CNN dari nol** sebagai pembanding.  
-2. Menerapkan **Transfer Learning** untuk meningkatkan akurasi dan stabilitas pelatihan.  
-3. Menyediakan aplikasi Streamlit yang mendukung:
-   - Upload **1 gambar**
-   - Upload **multi gambar**
-   - Upload **ZIP batch**
-   - Menampilkan **Top-3 + Confidence + Insight low-confidence**
+---
+
+## 🧠 Project Overview
+
+This project develops a **deep learning-based image classification system** to identify the ripeness level of oil palm fruit bunches.
+
+The system integrates:
+- Convolutional Neural Networks (CNN)
+- Transfer Learning (MobileNetV2 & EfficientNetB0)
+- Interactive deployment using Streamlit
+
+The objective is to improve **consistency, scalability, and objectivity** in ripeness assessment compared to manual observation.
+
+---
+
+## 🎯 Project Objectives
+
+- Build a **baseline CNN model** for benchmarking  
+- Apply **transfer learning** to improve performance  
+- Develop an **interactive prediction system**  
+- Provide **confidence-based insights** for decision support  
 
 ---
 
 ## 🗂️ Dataset
 
-Dataset: `dataset_sawit_UAP` (https://drive.google.com/drive/folders/1-nIuz8GupNU95R9naIz6s1i0DnDBahlP?usp=sharing)  
-Jumlah kelas: **5**
-- `decayed`
-- `fully_ripe`
-- `immature`
-- `over_ripe`
-- `partially_ripe`
+- Source: [Google Drive Dataset](https://drive.google.com/drive/folders/1-nIuz8GupNU95R9naIz6s1i0DnDBahlP?usp=sharing)  
+- Total Classes: **5**
+  - `decayed`
+  - `fully_ripe`
+  - `immature`
+  - `over_ripe`
+  - `partially_ripe`
 
-Distribusi dataset (setelah augmentasi offline): **5058 gambar**.
-Pembagian Data (Stratified Split)
-Dataset dibagi secara **stratified** (proporsi tiap kelas tetap terjaga) dengan rasio:
-- **Train: 70%** → **3541 gambar**
-- **Validation: 15%** → **759 gambar**
-- **Test: 15%** → **758 gambar**
+### 📊 Data Distribution
+- Total: **5058 images**
+- Train: **70% (3541)**
+- Validation: **15% (759)**
+- Test: **15% (758)**
 
-Pembagian stratified digunakan untuk menjaga distribusi kelas tetap seimbang pada setiap subset.
+> Stratified splitting ensures balanced class distribution across datasets.
 
-
-**Catatan penting:** sebagian kelas memiliki kemiripan visual tinggi (mis. `partially_ripe` vs `fully_ripe`) sehingga bisa menurunkan confidence.
+⚠️ Note: Some classes exhibit **high visual similarity**, affecting classification confidence.
 
 ---
 
-## 🧪 Eksperimen & Metodologi
+## 🧪 Methodology
 
-### 📊 EDA Singkat
-- Cek distribusi kelas
-- Visualisasi contoh per kelas
-- Cek variasi pencahayaan / background
+### 🔹 Exploratory Data Analysis
+- Class distribution analysis  
+- Sample visualization  
+- Lighting & background variability check  
 
-### 🧼 Preprocessing
+### 🔹 Preprocessing
 - Resize: **160×160**
-- Normalisasi: (mis. `x/255.0`)
-- Format RGB
+- Normalization: `x / 255`
+- RGB conversion  
 
-### 🧩 Augmentasi
-Augmentasi ringan untuk meningkatkan generalisasi tanpa membebani training:
-- RandomFlip (horizontal)
-- RandomRotation kecil
-- RandomZoom kecil
-- RandomContrast kecil
+### 🔹 Data Augmentation
+- Horizontal flip  
+- Small rotation  
+- Zoom & contrast adjustment  
 
-### 🧠 Pemodelan
-Model yang diuji:
-1. **Base CNN (Non-pretrained)** — baseline
-2. **MobileNetV2 (Pretrained - Freeze + Head)** — efisien
-3. **EfficientNetB0 (Pretrained - Fine-tune)** — akurasi terbaik
+### 🔹 Modeling Strategy
+- **Baseline CNN** (non-pretrained)  
+- **MobileNetV2** (transfer learning - frozen layers)  
+- **EfficientNetB0** (fine-tuning)  
 
 ---
 
-## 🏆 Hasil & Analisis
+## 🏆 Results & Analysis
 
-### 📌 Ringkasan Performa
-| Model | Test Accuracy | Catatan |
-|------|--------------:|--------|
-| Base CNN | 0.61 | baseline, generalisasi terbatas |
-| MobileNetV2 (Freeze) | 0.758 | stabil, ringan |
-| EfficientNetB0 (Fine-tune) | 0.821 | terbaik, gap train-val kecil |
+### 📌 Model Performance
 
-
-### 🧩 Confusion Matrix & Error Analysis
-- Error dominan terjadi pada pasangan kelas yang mirip:
-  - `partially_ripe` ↔ `fully_ripe`
-- Faktor penyebab umum:
-  - pencahayaan ekstrem
-  - background dominan
-  - objek tandan terlalu kecil di frame
-  - blur
-
-**Low confidence insight (di aplikasi):**
-- menampilkan Top-3 probabilitas
-- menampilkan margin Top1–Top2
-- memberi rekomendasi foto ulang bila confidence rendah
+| Model | Accuracy | Insight |
+|------|---------:|--------|
+| Base CNN | 0.61 | Limited generalization |
+| MobileNetV2 | 0.758 | Stable & efficient |
+| EfficientNetB0 | **0.821** | Best performance |
 
 ---
 
-## 💻 Cara Menjalankan (VSCode / Lokal)
+### 🧩 Error Analysis
 
-> Jalankan semua perintah dari **root project** (folder yang berisi `pyproject.toml`).
-> 
-### 1) Install dependensi (PDM)
-```
+Main challenges:
+- `partially_ripe` vs `fully_ripe` confusion  
+- Lighting variability  
+- Background noise  
+- Small object representation  
+
+### 🔍 Confidence Insight (App Feature)
+- Top-3 prediction output  
+- Confidence margin (Top1 vs Top2)  
+- Low-confidence detection + recommendation  
+
+---
+
+## 📈 Key Contributions
+
+- Comparative study: **CNN vs Transfer Learning**  
+- Fine-tuning EfficientNet for improved accuracy  
+- Deployment into **Streamlit-based application**  
+- Integration of **confidence-aware prediction system**  
+- Application of AI in **agriculture domain**
+
+---
+
+## 💻 How to Run
+
+```bash
 pdm install
-```
-### 2) Jalankan Aplikasi Streamlit
-```
 pdm run python -m streamlit run src/app.py
 ```
 ---
 
-## 🖥️ Demo Streamlit
+---
 
-Aplikasi Streamlit disiapkan sebagai antarmuka untuk memprediksi tingkat kematangan tandan sawit berbasis citra.
+## 🖥️ Application Features
 
-### ✨ Fitur Utama
-- **Pilih model**: Base CNN / MobileNetV2 / EfficientNetB0  
-- **Mode input**:
-  - Upload **single** gambar
-  - Upload **multi-image** (lebih dari 1 gambar)
-  - Upload **ZIP batch** (banyak gambar sekaligus)
-- Menampilkan **Top-3 candidates** (3 kelas teratas beserta probabilitas)
-- Menampilkan **Confidence + Margin (Top1–Top2)** untuk mendeteksi ambiguitas prediksi
-- Peringatan **LOW confidence** + **insight & saran foto ulang**
-- **Download hasil prediksi (CSV)** untuk multi-image dan ZIP
+- Multi-model selection (CNN, MobileNetV2, EfficientNetB0)  
+- Input support:
+  - Single image  
+  - Multiple images  
+  - ZIP batch upload  
+- Top-3 prediction display with probability scores  
+- Confidence & ambiguity detection (Top1–Top2 margin)  
+- CSV export for batch prediction results  
 
 ---
 
-## 🔗 Link Live Demo <a id="link-live-demo"></a>
+## 🔗 Live Demo
 
-Dashboard streamlit dapat diakses oleh pengguna lain melalui link berikut:
-- **Live Demo:** https://uapmachinelearningamuhammadwildannabila202210370311252-3dgw4zg.streamlit.app/
+👉 https://uapmachinelearningamuhammadwildannabila202210370311252-3dgw4zg.streamlit.app/
 
 ---
 
-## 🧱 Struktur Folder
+## 🧱 Project Structure
 
 ```bash
 DEMO_UAP_ML/
 ├─ src/
 │  └─ app.py
 ├─ sawit_models/
-│  ├─ class_names.json
-│  ├─ model_base_cnn.keras
-│  ├─ model_mobilenetv2.keras
-│  └─ model_efficientnetb0_ft.keras
 ├─ results/
-│  ├─ figures/         
-│  ├─ reports/                       
-├─ notebooks/          
-├─ pyproject.toml
-├─ pdm.lock
+├─ notebooks/
 ├─ requirements.txt
-├─ .gitignore
 └─ README.md
 ```
+---
+---
+
+## ⚠️ Limitations
+
+- Visual overlap between similar classes (e.g., *partially_ripe* vs *fully_ripe*)  
+- Sensitivity to real-world image conditions (lighting, blur, background noise)  
+- Class imbalance in certain categories  
 
 ---
 
-## ⚠️ Keterbatasan & Rencana Perbaikan
+## 🚀 Future Improvements
 
-### Keterbatasan
-- **Overlap visual antar kelas:** pasangan kelas seperti `partially_ripe` vs `fully_ripe` sering mirip karena perbedaan tingkat kematangan bersifat gradual.
-- **Sensitif terhadap kondisi foto lapangan:** pencahayaan ekstrem, blur, background ramai, atau objek tandan terlalu kecil dapat menurunkan confidence.
-- **Ketidakseimbangan data (minoritas):** beberapa kelas memiliki jumlah data lebih sedikit (mis. `decayed`) sehingga model berpotensi bias, meskipun sudah dibantu augmentasi / class weight.
-
-### Rencana Perbaikan
-- Menambah data untuk kelas yang lebih sedikit (contoh: `decayed`) dan memperkaya variasi kondisi lapangan.
-- Menambahkan augmentasi yang lebih robust terhadap pencahayaan (brightness/contrast yang terkontrol) tanpa membuat data menjadi tidak realistis.
-- Menambahkan interpretabilitas (opsional) seperti **Grad-CAM** untuk melihat area citra yang paling berpengaruh terhadap prediksi.
-- (Opsional) Kalibrasi confidence (mis. **temperature scaling**) agar confidence lebih representatif pada data baru.
+- Data enrichment for minority classes  
+- More robust augmentation strategies  
+- Model interpretability (Grad-CAM)  
+- Confidence calibration for improved reliability  
 
 ---
 
-## 👥 Kontributor
+## 🎯 Project Positioning
 
-| Nama | NIM | Prodi | Tahun |
-|------|-----|------|------|
-| **Muhammad Wildan Nabila** | **202210370311252** | **Informatika, Universitas Muhammadiyah Malang** | **2025** |
+This project demonstrates competencies in:
+
+- Deep Learning (CNN & Transfer Learning)  
+- Computer Vision (Image Classification)  
+- Model Evaluation & Error Analysis  
+- Model Deployment (Streamlit)  
+- Applied AI in Agriculture  
+
+---
+
+## 👨‍💻 Author
+
+**Muhammad Wildan Nabila**  
+Informatics — Universitas Muhammadiyah Malang  
+2025  
+
+---
+
+## 🚀 Closing
+
+> Transforming agricultural image data into actionable insights through deep learning and intelligent systems.
