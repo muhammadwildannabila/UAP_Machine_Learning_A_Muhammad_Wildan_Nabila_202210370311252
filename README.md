@@ -1,229 +1,197 @@
 <div align="center">
 
-# 🌴 Sawit Ripeness Classifier  
-### Deep Learning for Oil Palm Maturity Classification
+# 🌴 Sawit Ripeness Classifier
+
+### Deep Learning and Computer Vision for Oil Palm Maturity Classification
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python)
-![Deep Learning](https://img.shields.io/badge/Deep-Learning-CNN-orange?style=for-the-badge)
-![Computer Vision](https://img.shields.io/badge/Computer-Vision-green?style=for-the-badge)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-Deep%20Learning-FF6F00?style=for-the-badge&logo=tensorflow)
+![Computer Vision](https://img.shields.io/badge/Computer%20Vision-Image%20Classification-22C55E?style=for-the-badge)
+![CNN](https://img.shields.io/badge/CNN-Convolutional%20Neural%20Network-F97316?style=for-the-badge)
+![Transfer Learning](https://img.shields.io/badge/Transfer%20Learning-EfficientNetB0-8B5CF6?style=for-the-badge)
+![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Application-FF4B4B?style=for-the-badge&logo=streamlit)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
 
-### 🔵 Academic Project (Coursework / Assignment) 2025
+### 🔵 Academic Project (Coursework / Assignment)
+
+🔗 **Live Demo:** https://uapmachinelearningamuhammadwildannabila202210370311252-3dgw4zg.streamlit.app/
 
 </div>
 
 ---
 
-## 🖥️ Application Preview
+# 🖥️ Application Preview
 
-![Dashboard](assets/dashboard-preview.png)
+![Application Preview](assets/dashboard-preview.png)
 
-> Interactive dashboard for oil palm ripeness classification with multi-input support and confidence-based insights.
-
----
-
-## 🧠 Project Overview
-
-This project develops a **deep learning-based image classification system** to identify the ripeness level of oil palm fruit bunches.
-
-The system integrates:
-- Convolutional Neural Networks (CNN)
-- Transfer Learning (MobileNetV2 & EfficientNetB0)
-- Interactive deployment using Streamlit
-
-The objective is to improve **consistency, scalability, and objectivity** in ripeness assessment compared to manual observation.
+> Interactive deep learning application for classifying oil palm ripeness with multi-image support, top-3 predictions, and confidence-based insights. :contentReference[oaicite:0]{index=0}
 
 ---
 
-## 🎯 Project Objectives
+# 🧠 Project Overview
 
-- Build a **baseline CNN model** for benchmarking  
-- Apply **transfer learning** to improve performance  
-- Develop an **interactive prediction system**  
-- Provide **confidence-based insights** for decision support  
+This project develops a deep learning-based image classification system to identify the ripeness level of oil palm fruit bunches.
+
+The solution combines Convolutional Neural Networks (CNN), transfer learning with MobileNetV2 and EfficientNetB0, and an interactive Streamlit application to deliver scalable and objective maturity assessment.
+
+The project demonstrates how artificial intelligence can be applied in the agriculture domain to improve consistency and efficiency compared with manual inspection methods.
 
 ---
 
-## 🗂️ Dataset
+# 🎯 Project Objectives
 
-- Source: [Google Drive Dataset](https://drive.google.com/drive/folders/1-nIuz8GupNU95R9naIz6s1i0DnDBahlP?usp=sharing)  
-- Total Classes: **5**
+- Build a baseline CNN model for benchmarking.
+- Apply transfer learning to improve classification accuracy.
+- Compare multiple deep learning architectures.
+- Develop an interactive prediction application.
+- Provide confidence-based insights for decision support.
 
-### 🖼️ Sample Data per Class
+---
+
+# 🗂️ Dataset Overview
+
+| Attribute | Value |
+|---------|-------|
+| Total Images | 5,058 |
+| Number of Classes | 5 |
+| Classes | immature, partially_ripe, fully_ripe, over_ripe, decayed |
+| Data Split | 70% Train, 15% Validation, 15% Test |
+| Image Size | 160 × 160 pixels |
+
+---
+
+# 🖼️ Sample Images by Class
 
 | Class | Example |
 |------|--------|
-| **immature** | ![](assets/immature.jpg) |
-| **partially_ripe** | ![](assets/partiallyripe.jpg) |
-| **fully_ripe** | ![](assets/fullyripe.jpg) |
-| **over_ripe** | ![](assets/overripe.jpg) |
-| **decayed** | ![](assets/decayed.jpg) |
+| immature | ![](assets/immature.jpg) |
+| partially_ripe | ![](assets/partiallyripe.jpg) |
+| fully_ripe | ![](assets/fullyripe.jpg) |
+| over_ripe | ![](assets/overripe.jpg) |
+| decayed | ![](assets/decayed.jpg) |
 
 ---
 
-### 📊 Data Characteristics
+# 🧪 Methodology
 
-- Total images: **5058**
-- Stratified split:
-  - Train: 70%
-  - Validation: 15%
-  - Test: 15%
-
-### ⚠️ Notes
-
-- Some classes exhibit **high visual similarity**, especially:
-  - *partially_ripe* vs *fully_ripe*
-- Variability in:
-  - Lighting conditions  
-  - Background complexity  
-  - Object scale  
-
-These factors contribute to **classification ambiguity and model uncertainty**.
-
----
-
-## 🧪 Methodology
-
-### 🔹 Exploratory Data Analysis
-- Class distribution analysis  
-- Sample visualization  
-- Lighting & background variability check  
-
-### 🔹 Preprocessing
-- Resize: **160×160**
-- Normalization: `x / 255`
-- RGB conversion  
-
-### 🔹 Data Augmentation
-- Horizontal flip  
-- Small rotation  
-- Zoom & contrast adjustment  
-
-### 🔹 Modeling Strategy
-- **Baseline CNN** (non-pretrained)  
-- **MobileNetV2** (transfer learning - frozen layers)  
-- **EfficientNetB0** (fine-tuning)  
+```text
+Image Collection
+        ↓
+Exploratory Data Analysis
+        ↓
+Preprocessing & Normalization
+        ↓
+Data Augmentation
+        ↓
+Baseline CNN Modeling
+        ↓
+Transfer Learning
+        ↓
+Model Evaluation
+        ↓
+Streamlit Deployment
+```
 
 ---
 
-## 🏆 Results & Analysis
-
-### 📌 Model Performance
+# 📈 Model Performance
 
 | Model | Accuracy | Insight |
 |------|---------:|--------|
-| Base CNN | 0.61 | Limited generalization |
-| MobileNetV2 | 0.758 | Stable & efficient |
+| Baseline CNN | 0.61 | Limited generalization |
+| MobileNetV2 | 0.758 | Stable and efficient |
 | EfficientNetB0 | **0.821** | Best performance |
 
----
-
-### 🧩 Error Analysis
-
-Main challenges:
-- `partially_ripe` vs `fully_ripe` confusion  
-- Lighting variability  
-- Background noise  
-- Small object representation  
-
-### 🔍 Confidence Insight (App Feature)
-- Top-3 prediction output  
-- Confidence margin (Top1 vs Top2)  
-- Low-confidence detection + recommendation  
+> 🏆 **Best Model:** EfficientNetB0
 
 ---
 
-## 📈 Key Contributions
+# ✨ Application Features
 
-- Comparative study: **CNN vs Transfer Learning**  
-- Fine-tuning EfficientNet for improved accuracy  
-- Deployment into **Streamlit-based application**  
-- Integration of **confidence-aware prediction system**  
-- Application of AI in **agriculture domain**
-
----
-
-## 💻 How to Run
-
-```bash
-pdm install
-pdm run python -m streamlit run src/app.py
-```
----
+- 🤖 Multi-model selection
+- 🖼️ Single and batch image upload
+- 📦 ZIP file batch processing
+- 🏆 Top-3 predictions with probabilities
+- 📊 Confidence and ambiguity detection
+- 📄 CSV export for batch results
 
 ---
 
-## 🖥️ Application Features
+# 🔍 Key Findings
 
-- Multi-model selection (CNN, MobileNetV2, EfficientNetB0)  
-- Input support:
-  - Single image  
-  - Multiple images  
-  - ZIP batch upload  
-- Top-3 prediction display with probability scores  
-- Confidence & ambiguity detection (Top1–Top2 margin)  
-- CSV export for batch prediction results  
+- Transfer learning significantly outperformed the baseline CNN.
+- EfficientNetB0 achieved the highest test accuracy.
+- Visual similarity between partially ripe and fully ripe fruits remained the primary classification challenge.
+- Confidence-based prediction improved interpretability and usability.
 
 ---
 
-## 🔗 Live Demo
+# 👨‍💻 My Role
 
-👉 https://uapmachinelearningamuhammadwildannabila202210370311252-3dgw4zg.streamlit.app/
+This is a fully independent end-to-end project covering:
 
----
-
-## 🧱 Project Structure
-
-```bash
-DEMO_UAP_ML/
-├─ src/
-│  └─ app.py
-├─ sawit_models/
-├─ results/
-├─ notebooks/
-├─ requirements.txt
-└─ README.md
-```
----
----
-
-## ⚠️ Limitations
-
-- Visual overlap between similar classes (e.g., *partially_ripe* vs *fully_ripe*)  
-- Sensitivity to real-world image conditions (lighting, blur, background noise)  
-- Class imbalance in certain categories  
+- Dataset exploration
+- Image preprocessing and augmentation
+- Deep learning model development
+- Transfer learning and fine-tuning
+- Model evaluation and error analysis
+- Streamlit application development
+- Deployment and documentation
 
 ---
 
-## 🚀 Future Improvements
+# 🚧 Key Challenge
 
-- Data enrichment for minority classes  
-- More robust augmentation strategies  
-- Model interpretability (Grad-CAM)  
-- Confidence calibration for improved reliability  
+**Challenge:** High visual similarity between ripeness stages, especially partially ripe and fully ripe.
 
----
-
-## 🎯 Project Positioning
-
-This project demonstrates competencies in:
-
-- Deep Learning (CNN & Transfer Learning)  
-- Computer Vision (Image Classification)  
-- Model Evaluation & Error Analysis  
-- Model Deployment (Streamlit)  
-- Applied AI in Agriculture  
+**Solution:** Transfer learning and fine-tuning with EfficientNetB0 improved feature extraction and significantly increased classification accuracy.
 
 ---
 
-## 👨‍💻 Author
+# 💼 Practical Impact
+
+This system can help agricultural stakeholders to:
+
+- Standardize ripeness assessment.
+- Reduce subjective judgment.
+- Improve harvesting decisions.
+- Support scalable and automated quality control.
+
+---
+
+# 🛠️ Technology Stack
+
+- Python
+- TensorFlow / Keras
+- Computer Vision
+- CNN
+- MobileNetV2
+- EfficientNetB0
+- Streamlit
+
+---
+
+# 🎯 Career Relevance
+
+Relevant for roles in:
+
+- Machine Learning Engineer
+- Deep Learning Engineer
+- Computer Vision Engineer
+- Data Scientist
+- AI Engineer
+
+---
+
+# 👨‍💻 Author
 
 **Muhammad Wildan Nabila**  
-Informatics — Universitas Muhammadiyah Malang  
-2025  
+Informatics — Universitas Muhammadiyah Malang
 
 ---
 
-## 🚀 Closing
+<div align="center">
 
-> Transforming agricultural image data into actionable insights through deep learning and intelligent systems.
+### 🌴 Transforming Agricultural Images into Actionable Insights with Deep Learning
+
+</div>
